@@ -3,7 +3,7 @@ Some boxes are localized however all localized boxes are vanilla images with the
 
 Vagrant Boxes:
 
-railsdemohc               (virtualbox) <-- Ruby passenger hello world
+railsdemohc               (virtualbox) <-- Ruby passenger hello world 
 ubuntu14lts_hashi         (virtualbox) <-- Hashi corp base ubuntu server 14LTS
 centos6                   (virtualbox) <-- base centos6 localized
 centos7                   (virtualbox) <-- base centos7 localized
@@ -20,3 +20,6 @@ Install for puppet ubuntu
 Install for puppet centos6
 Install for scoop windows
 Install for puppet and modules (dism,iis) windows
+
+Special Notes:
+Windows 2012 base is the eval version non-keyed or piped
