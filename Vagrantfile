@@ -9,6 +9,8 @@
 #puppet for 7 sudo rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
 #puppet for 6 sudo rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm 
 
+#localized Boxe Base directory
+localized_dir = 'file://c:/boxes/'
 
 #puppet install ubuntu script
 $pup_agent_script_ulx = <<SCRIPT
@@ -137,7 +139,7 @@ Vagrant.configure(2) do |config|
 		        v.name = "centos6_vagrant"
 		end
 
-		centos.vm.box = "file://c:/boxes/centos6.box"
+		centos.vm.box =  localized_dir + "centos6.box"
 		#centos.vm.box = "centos/6"
 		centos.vm.communicator = :ssh
 		centos.vm.guest = :linux
@@ -159,7 +161,7 @@ Vagrant.configure(2) do |config|
 		        v.name = "centos7_vagrant"
 		end
 
-		centos.vm.box = "file://c:/boxes/centos7.box"
+		centos.vm.box =  localized_dir + "centos7.box"
 		centos.vm.communicator = :ssh
 		centos.vm.guest = :linux
 		centos.ssh.username = "root"
@@ -180,7 +182,7 @@ Vagrant.configure(2) do |config|
 		        v.name = "ubuntu14lts1_vagrant"
 		end
 
-		ubuntu14lts.vm.box = "file://c:/boxes/ubunut14lts.box"
+		ubuntu14lts.vm.box = localized_dir + "ubunut14lts.box"
 		ubuntu14lts.vm.communicator = :ssh
 		ubuntu14lts.vm.guest = :linux
 		ubuntu14lts.ssh.username = "vagrant"
@@ -201,7 +203,7 @@ Vagrant.configure(2) do |config|
 		        v.name = "ubuntu14lts2_vagrant"
 		end
 
-		ubuntu14lts.vm.box = "file://c:/boxes/ubunut14lts.box"
+		ubuntu14lts.vm.box =  localized_dir + "ubunut14lts.box"
 		ubuntu14lts.vm.communicator = :ssh
 		ubuntu14lts.vm.guest = :linux
 		ubuntu14lts.ssh.username = "vagrant"
@@ -222,7 +224,7 @@ Vagrant.configure(2) do |config|
 		        v.name = "ulxjenkinsmaster_vagrant"
 		end
 
-		ulxjenkinsmaster.vm.box = "file://c:/boxes/ubunut14lts.box"
+		ulxjenkinsmaster.vm.box =  localized_dir + "ubunut14lts.box"
 		ulxjenkinsmaster.vm.communicator = :ssh
 		ulxjenkinsmaster.vm.guest = :linux
 		ulxjenkinsmaster.ssh.username = "vagrant"
@@ -246,7 +248,7 @@ Vagrant.configure(2) do |config|
 		        v.name = "windows2012base_vagrant"
 		end
 
-		windows2012base.vm.box = "file://c:/boxes/windows2012r2.box"
+		windows2012base.vm.box =  localized_dir + "windows2012r2.box"
 		windows2012base.vm.communicator = "winrm"
 		windows2012base.vm.guest = :windows
 		windows2012base.ssh.username = "vagrant"
@@ -271,7 +273,7 @@ Vagrant.configure(2) do |config|
 		        v.name = "windows2012base_vagrant"
 		end
 
-		windows2012base.vm.box = "file://c:/boxes/windows2012r2.box"
+		windows2012base.vm.box =  localized_dir + "windows2012r2.box"
 		windows2012base.vm.communicator = "winrm"
 		windows2012base.vm.guest = :windows
 		windows2012base.ssh.username = "vagrant"
