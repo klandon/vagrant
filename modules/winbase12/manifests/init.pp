@@ -4,6 +4,13 @@ class winbase12 {
                 ensure => 'directory',
         }
 
+        file{'c:/opt/class_file.txt':
+                ensure => file,
+                content => 'This is a was registered as a windows 2012 eval untu14 class node from vagrant!!!',
+                require => File['c:/opt'],
+        }
+        
+
         dism { 'NetFx3ServerFeatures':
                 ensure => present,
         }
