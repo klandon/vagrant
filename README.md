@@ -23,3 +23,7 @@ Install for puppet and modules (dism,iis) windows
 
 Special Notes:
 Windows 2012 base is the eval version non-keyed or piped
+
+Vagrant plugins needed
+
+vagrant plugin install vagrant-reload
