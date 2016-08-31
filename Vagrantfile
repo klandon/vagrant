@@ -106,6 +106,7 @@ Vagrant.configure(2) do |config|
 		railsdemohc.vm.synced_folder '.', '/vagrant', disabled: false
 		railsdemohc.vm.provision "shell", inline: "echo '127.0.0.1 railsdemo.lab.local' > /etc/hosts"
 		railsdemohc.vm.provision "shell", inline: "echo '127.0.0.1 railsdemo' > /etc/hosts"
+		railsdemohc.vm.provision "shell", inline: "echo '127.0.0.1 localhost' >> /etc/hosts"
 		railsdemohc.vm.provision "shell", inline: "hostnamectl set-hostname railsdemo.lab.local"
 		railsdemohc.vm.provision "shell", inline: $pup_agent_script_ulx
 		railsdemohc.vm.network "forwarded_port", guest: 9090, host: 9090
@@ -127,6 +128,7 @@ Vagrant.configure(2) do |config|
 		ubuntu14lts.vm.synced_folder '.', '/vagrant', disabled: false
 		ubuntu14lts.vm.provision "shell", inline: "echo '127.0.0.1 ubuntu14lts.lab.local' > /etc/hosts"
 		ubuntu14lts.vm.provision "shell", inline: "echo '127.0.0.1 ubuntu14lts' > /etc/hosts"
+		ubuntu14lts.vm.provision "shell", inline: "echo '127.0.0.1 localhost' >> /etc/hosts"
 		ubuntu14lts.vm.provision "shell", inline: "hostnamectl set-hostname ubuntu14lts.lab.local"
 		ubuntu14lts.vm.provision "shell", inline: $pup_agent_script_ulx
 		ubuntu14lts.vm.provision "puppet"
@@ -148,6 +150,7 @@ Vagrant.configure(2) do |config|
 		centos.vm.synced_folder '.', '/vagrant', disabled: false
 		centos.vm.provision "shell", inline: "echo '127.0.0.1 centos6.lab.local' > /etc/hosts"
 		centos.vm.provision "shell", inline: "echo '127.0.0.1 centos6' > /etc/hosts"
+		centos.vm.provision "shell", inline: "echo '127.0.0.1 localhost' >> /etc/hosts"
 		centos.vm.provision "shell", inline: "sed -i '/HOSTNAME=/c\HOSTNAME=centos6.lab.local' /etc/sysconfig/network "
 		centos.vm.provision "shell", inline: "hostname centos6.lab.local"
 		centos.vm.provision "shell", inline: $pup_agent_script_clx6
@@ -169,6 +172,7 @@ Vagrant.configure(2) do |config|
 		centos.vm.synced_folder '.', '/vagrant', disabled: false
 		centos.vm.provision "shell", inline: "echo '127.0.0.1 centos7.lab.local' > /etc/hosts"
 		centos.vm.provision "shell", inline: "echo '127.0.0.1 centos7' > /etc/hosts"
+		centos.vm.provision "shell", inline: "echo '127.0.0.1 localhost' >> /etc/hosts"
 		centos.vm.provision "shell", inline: "sed -i '/HOSTNAME=/c\HOSTNAME=centos7.lab.local' /etc/sysconfig/network "
 		centos.vm.provision "shell", inline: "hostname centos7.lab.local"
 		centos.vm.provision "shell", inline: $pup_agent_script_clx7
@@ -190,6 +194,7 @@ Vagrant.configure(2) do |config|
 		ubuntu14lts.vm.synced_folder '.', '/vagrant', disabled: false
 		ubuntu14lts.vm.provision "shell", inline: "echo '127.0.0.1 ubuntu14lts.lab.local' > /etc/hosts"
 		ubuntu14lts.vm.provision "shell", inline: "echo '127.0.0.1 ubuntu14lts' > /etc/hosts"
+		ubuntu14lts.vm.provision "shell", inline: "echo '127.0.0.1 localhost' >> /etc/hosts"
 		ubuntu14lts.vm.provision "shell", inline: "hostnamectl set-hostname ubuntu14lts.lab.local"
 		ubuntu14lts.vm.provision "shell", inline: $pup_agent_script_ulx
 		ubuntu14lts.vm.provision "puppet" 
@@ -211,6 +216,7 @@ Vagrant.configure(2) do |config|
 		ubuntu14lts.vm.synced_folder '.', '/vagrant', disabled: false
 		ubuntu14lts.vm.provision "shell", inline: "echo '127.0.0.1 ubuntu14lts.lab.local' > /etc/hosts"
 		ubuntu14lts.vm.provision "shell", inline: "echo '127.0.0.1 ubuntu14lts' > /etc/hosts"
+		ubuntu14lts.vm.provision "shell", inline: "echo '127.0.0.1 localhost' >> /etc/hosts"
 		ubuntu14lts.vm.provision "shell", inline: "hostnamectl set-hostname ubuntu14lts.lab.local"
 		ubuntu14lts.vm.provision "shell", inline: $pup_agent_script_ulx
 		ubuntu14lts.vm.provision "puppet" 
@@ -232,6 +238,7 @@ Vagrant.configure(2) do |config|
 		ulxjenkinsmaster.vm.synced_folder '.', '/vagrant', disabled: false
 		ulxjenkinsmaster.vm.provision "shell", inline: "echo '127.0.0.1 ulxjenkinsmaster.lab.local' > /etc/hosts"
 		ulxjenkinsmaster.vm.provision "shell", inline: "echo '127.0.0.1 ulxjenkinsmaster' > /etc/hosts"
+		ulxjenkinsmaster.vm.provision "shell", inline: "echo '127.0.0.1 localhost' >> /etc/hosts"
 		ulxjenkinsmaster.vm.provision "shell", inline: "hostnamectl set-hostname ulxjenkinsmaster.lab.local"
 		ulxjenkinsmaster.vm.provision "shell", inline: $pup_agent_script_ulx
 		ulxjenkinsmaster.vm.network "forwarded_port", guest: 50000, host: 50000
@@ -307,6 +314,7 @@ Vagrant.configure(2) do |config|
 		ulxjenkinsmaster.vm.synced_folder '.', '/vagrant', disabled: false
 		ulxjenkinsmaster.vm.provision "shell", inline: "echo '127.0.0.1 ulxjenkinsmaster.lab.local' > /etc/hosts"
 		ulxjenkinsmaster.vm.provision "shell", inline: "echo '127.0.0.1 ulxjenkinsmaster' > /etc/hosts"
+		ulxjenkinsmaster.vm.provision "shell", inline: "echo '127.0.0.1 localhost' >> /etc/hosts"
 		ulxjenkinsmaster.vm.provision "shell", inline: "hostnamectl set-hostname ulxjenkinsmaster.lab.local"
 		ulxjenkinsmaster.vm.provision "shell", inline: $pup_agent_script_ulx
 		ulxjenkinsmaster.vm.network "forwarded_port", guest: 50000, host: 50000
