@@ -4,6 +4,12 @@ node 'default' {
 	}
 	
 
+node /^centos7/ {
+	
+		class {"centos7base":}
+	}
+
+
 node /^ubuntu/ {
 	
 		class {"ubuntu14":}

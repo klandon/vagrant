@@ -15,14 +15,17 @@ localized_dir = 'file://c:/boxes/'
 #puppet install ubuntu script
 $pup_agent_script_ulx = <<SCRIPT
     if which puppet > /dev/null 2>&1; then
-      echo 'Puppet Installed.'
+      echo 'Puppet Installed removing to install newest.'
+	  sudo apt-get purge puppet -y
     else
-      echo 'Installing Puppet Agent.'
-		sudo wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
-		sudo dpkg -i puppetlabs-release-trusty.deb
-		sudo apt-get update
-		sudo apt-get install puppet -y
+      echo 'Puppet Agent Not Found.'
     fi
+
+	echo 'Installing Puppet Agent.'
+	sudo wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
+	sudo dpkg -i puppetlabs-release-trusty.deb
+	sudo apt-get update
+	sudo apt-get install puppet -y
 SCRIPT
 
 #puppet install centos puppet
@@ -112,6 +115,8 @@ Vagrant.configure(2) do |config|
 		railsdemohc.vm.network "forwarded_port", guest: 9090, host: 9090
 		railsdemohc.vm.provision "puppet" do | puppet |
 			puppet.module_path = "modules"
+			puppet.environment_path = "environments"
+    		puppet.environment = "sandbox"
 		end
 
 	end
@@ -135,6 +140,8 @@ Vagrant.configure(2) do |config|
 		ubuntu14lts.vm.provision "shell", inline: $pup_agent_script_ulx
 		ubuntu14lts.vm.provision "puppet" do | puppet |
 			puppet.module_path = "modules"
+			puppet.environment_path = "environments"
+    		puppet.environment = "sandbox"
 		end
 
 	end
@@ -160,6 +167,8 @@ Vagrant.configure(2) do |config|
 		centos.vm.provision "shell", inline: $pup_agent_script_clx6
 		centos.vm.provision "puppet" do | puppet |
 			puppet.module_path = "modules"
+			puppet.environment_path = "environments"
+    		puppet.environment = "sandbox"
 		end
 
 	end
@@ -184,6 +193,8 @@ Vagrant.configure(2) do |config|
 		centos.vm.provision "shell", inline: $pup_agent_script_clx7
 		centos.vm.provision "puppet" do | puppet |
 			puppet.module_path = "modules"
+			puppet.environment_path = "environments"
+    		puppet.environment = "sandbox"
 		end
 
 	end
@@ -207,6 +218,8 @@ Vagrant.configure(2) do |config|
 		ubuntu14lts.vm.provision "shell", inline: $pup_agent_script_ulx
 		ubuntu14lts.vm.provision "puppet" do | puppet |
 			puppet.module_path = "modules"
+			puppet.environment_path = "environments"
+    		puppet.environment = "sandbox"
 		end
 		ubuntu14lts.vm.network "private_network", type: "dhcp", auto_config: false
 
@@ -231,6 +244,8 @@ Vagrant.configure(2) do |config|
 		ubuntu14lts.vm.provision "shell", inline: $pup_agent_script_ulx
 		ubuntu14lts.vm.provision "puppet" do | puppet |
 			puppet.module_path = "modules"
+			puppet.environment_path = "environments"
+    		puppet.environment = "sandbox"
 		end
 		ubuntu14lts.vm.network "private_network", type: "dhcp", auto_config: false
 
@@ -257,6 +272,8 @@ Vagrant.configure(2) do |config|
 		ulxjenkinsmaster.vm.network "forwarded_port", guest: 8080, host: 8080
 		ulxjenkinsmaster.vm.provision "puppet" do | puppet |
 			puppet.module_path = "modules"
+			puppet.environment_path = "environments"
+    		puppet.environment = "sandbox"
 		end
 		ulxjenkinsmaster.vm.network "private_network", type: "dhcp", auto_config: false
 
@@ -284,6 +301,8 @@ Vagrant.configure(2) do |config|
 		windows2012base.vm.provision "shell", inline: $add_puppet_modules_win, privileged: true
 		windows2012base.vm.provision "puppet" do | puppet |
 			puppet.module_path = "modules"
+			puppet.environment_path = "environments"
+    		puppet.environment = "sandbox"
 			puppet.working_directory = "/tmp/vagrant-puppet/"
 		end
 	end
@@ -310,6 +329,8 @@ Vagrant.configure(2) do |config|
 		windows2012base.vm.provision "shell", inline: $add_puppet_modules_win, privileged: true
 		windows2012base.vm.provision "puppet" do | puppet |
 			puppet.module_path = "modules"
+			puppet.environment_path = "environments"
+    		puppet.environment = "sandbox"
 			puppet.working_directory = "/tmp/vagrant-puppet/"
 		end
 	end
@@ -335,6 +356,8 @@ Vagrant.configure(2) do |config|
 		ulxjenkinsmaster.vm.network "forwarded_port", guest: 8080, host: 8080
 		ulxjenkinsmaster.vm.provision "puppet" do | puppet |
 			puppet.module_path = "modules"
+			puppet.environment_path = "environments"
+    		puppet.environment = "sandbox"
 		end
 
 	end
