@@ -110,7 +110,9 @@ Vagrant.configure(2) do |config|
 		railsdemohc.vm.provision "shell", inline: "hostnamectl set-hostname railsdemo.lab.local"
 		railsdemohc.vm.provision "shell", inline: $pup_agent_script_ulx
 		railsdemohc.vm.network "forwarded_port", guest: 9090, host: 9090
-		railsdemohc.vm.provision "puppet" 
+		railsdemohc.vm.provision "puppet" do | puppet |
+			puppet.module_path = "modules"
+		end
 
 	end
 	
@@ -131,7 +133,9 @@ Vagrant.configure(2) do |config|
 		ubuntu14lts.vm.provision "shell", inline: "echo '127.0.0.1 localhost' >> /etc/hosts"
 		ubuntu14lts.vm.provision "shell", inline: "hostnamectl set-hostname ubuntu14lts.lab.local"
 		ubuntu14lts.vm.provision "shell", inline: $pup_agent_script_ulx
-		ubuntu14lts.vm.provision "puppet"
+		ubuntu14lts.vm.provision "puppet" do | puppet |
+			puppet.module_path = "modules"
+		end
 
 	end
 
@@ -154,7 +158,9 @@ Vagrant.configure(2) do |config|
 		centos.vm.provision "shell", inline: "sed -i '/HOSTNAME=/c\HOSTNAME=centos6.lab.local' /etc/sysconfig/network "
 		centos.vm.provision "shell", inline: "hostname centos6.lab.local"
 		centos.vm.provision "shell", inline: $pup_agent_script_clx6
-		centos.vm.provision "puppet"
+		centos.vm.provision "puppet" do | puppet |
+			puppet.module_path = "modules"
+		end
 
 	end
 	
@@ -176,7 +182,9 @@ Vagrant.configure(2) do |config|
 		centos.vm.provision "shell", inline: "sed -i '/HOSTNAME=/c\HOSTNAME=centos7.lab.local' /etc/sysconfig/network "
 		centos.vm.provision "shell", inline: "hostname centos7.lab.local"
 		centos.vm.provision "shell", inline: $pup_agent_script_clx7
-		centos.vm.provision "puppet"
+		centos.vm.provision "puppet" do | puppet |
+			puppet.module_path = "modules"
+		end
 
 	end
 	
@@ -197,7 +205,9 @@ Vagrant.configure(2) do |config|
 		ubuntu14lts.vm.provision "shell", inline: "echo '127.0.0.1 localhost' >> /etc/hosts"
 		ubuntu14lts.vm.provision "shell", inline: "hostnamectl set-hostname ubuntu14lts.lab.local"
 		ubuntu14lts.vm.provision "shell", inline: $pup_agent_script_ulx
-		ubuntu14lts.vm.provision "puppet" 
+		ubuntu14lts.vm.provision "puppet" do | puppet |
+			puppet.module_path = "modules"
+		end
 		ubuntu14lts.vm.network "private_network", type: "dhcp", auto_config: false
 
 	end
@@ -219,7 +229,9 @@ Vagrant.configure(2) do |config|
 		ubuntu14lts.vm.provision "shell", inline: "echo '127.0.0.1 localhost' >> /etc/hosts"
 		ubuntu14lts.vm.provision "shell", inline: "hostnamectl set-hostname ubuntu14lts.lab.local"
 		ubuntu14lts.vm.provision "shell", inline: $pup_agent_script_ulx
-		ubuntu14lts.vm.provision "puppet" 
+		ubuntu14lts.vm.provision "puppet" do | puppet |
+			puppet.module_path = "modules"
+		end
 		ubuntu14lts.vm.network "private_network", type: "dhcp", auto_config: false
 
 	end
@@ -243,7 +255,9 @@ Vagrant.configure(2) do |config|
 		ulxjenkinsmaster.vm.provision "shell", inline: $pup_agent_script_ulx
 		ulxjenkinsmaster.vm.network "forwarded_port", guest: 50000, host: 50000
 		ulxjenkinsmaster.vm.network "forwarded_port", guest: 8080, host: 8080
-		ulxjenkinsmaster.vm.provision "puppet" 
+		ulxjenkinsmaster.vm.provision "puppet" do | puppet |
+			puppet.module_path = "modules"
+		end
 		ulxjenkinsmaster.vm.network "private_network", type: "dhcp", auto_config: false
 
 	end
@@ -319,7 +333,9 @@ Vagrant.configure(2) do |config|
 		ulxjenkinsmaster.vm.provision "shell", inline: $pup_agent_script_ulx
 		ulxjenkinsmaster.vm.network "forwarded_port", guest: 50000, host: 50000
 		ulxjenkinsmaster.vm.network "forwarded_port", guest: 8080, host: 8080
-		ulxjenkinsmaster.vm.provision "puppet" 
+		ulxjenkinsmaster.vm.provision "puppet" do | puppet |
+			puppet.module_path = "modules"
+		end
 
 	end
 	

@@ -4,6 +4,12 @@ node 'default' {
 	}
 	
 
+node /^ubuntu/ {
+	
+		class {"ubuntu14":}
+	}
+	
+
 node /^rails/
 {
 
