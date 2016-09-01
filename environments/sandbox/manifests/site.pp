@@ -12,7 +12,7 @@ node /^centos7/ {
 
 node /^ubuntu/ {
 	
-		class {"ubuntu14":}
+		class {"ubuntu14base":}
 	}
 	
 
@@ -20,7 +20,7 @@ node /^rails/
 {
 
 	
-	class {"ubuntu14":} ->
+	class {"ubuntu14base":} ->
 	class {"nodejs":} ->
 	class {"railspassenger":} ->
 	class {"nginx":} ->
@@ -31,19 +31,19 @@ node /^rails/
 
 node /^ulxjenkins/
 {
-	class {"ubuntu14":} ->
+	class {"ubuntu14base":} ->
 	class {"jenkins":}
 }
 
 
 node /^win2012/
 {
-	class{"winbase12":}
+	class{"win12base":}
 }
 
 node /^web2012/
 {
-	class{"winbase12":} ->
+	class{"win12base":} ->
 	class{"winiis":} ->
 	class{"ahelloworld":}
 }

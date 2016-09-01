@@ -1,4 +1,4 @@
-class winbase12 {
+class win12base {
 
         file {'c:/opt':
                 ensure => 'directory',
