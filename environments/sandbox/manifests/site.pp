@@ -4,9 +4,9 @@ node 'default' {
 	}
 	
 
-node /^centos7/ {
+node /^centos/ {
 	
-		class {"centos7base":}
+		class {"centosbase":}
 	}
 
 
@@ -16,12 +16,19 @@ node /^ubuntu/ {
 	}
 	
 
+node /^npm/ {
+	
+		class {"centosbase":} ->
+		class {"clxnodejs":} ->
+		class {"npm":}
+	}
+
 node /^rails/
 {
 
 	
 	class {"ubuntu14base":} ->
-	class {"nodejs":} ->
+	class {"ulxnodejs":} ->
 	class {"railspassenger":} ->
 	class {"nginx":} ->
 	class {"rubyrails":} ->

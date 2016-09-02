@@ -1,8 +1,8 @@
-class centos7base {
+class centosbase {
 
         file{'/opt/class_file.txt':
                 ensure => file,
-                content => 'This is a was registered as a centos 7 base class node from vagrant!!!',
+                content => 'This is a was registered as a centos base class node from vagrant!!!',
         }
         
         $base_paks = ['git','wget']

@@ -46,7 +46,7 @@ $pup_agent_script_clx7 = <<SCRIPT
       echo 'Puppet Installed.'
     else
       echo 'Installing Puppet Agent.'
-	  sudo rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-6.noarch.rpm
+	  sudo rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
 	  yum update
 	  yum install puppet -y
 	fi
@@ -190,6 +190,33 @@ Vagrant.configure(2) do |config|
 		centos.vm.provision "shell", inline: "echo '127.0.0.1 localhost' >> /etc/hosts"
 		centos.vm.provision "shell", inline: "sed -i '/HOSTNAME=/c\HOSTNAME=centos7.lab.local' /etc/sysconfig/network "
 		centos.vm.provision "shell", inline: "hostname centos7.lab.local"
+		centos.vm.provision "shell", inline: $pup_agent_script_clx7
+		centos.vm.provision "puppet" do | puppet |
+			puppet.module_path = "modules"
+			puppet.environment_path = "environments"
+    		puppet.environment = "sandbox"
+		end
+
+	end
+
+	config.vm.define "npm" do | centos | 
+
+		config.vm.provider "virtualbox" do |v|
+		        v.name = "npm_vagrant"
+		end
+
+		centos.vm.box =  localized_dir + "centos7.box"
+		centos.vm.communicator = :ssh
+		centos.vm.guest = :linux
+		centos.ssh.username = "root"
+		centos.ssh.password = "vagrant"
+		centos.vm.synced_folder '.', '/vagrant', disabled: false
+		centos.vm.provision "shell", inline: "echo '127.0.0.1 npm1.lab.local' > /etc/hosts"
+		centos.vm.provision "shell", inline: "echo '127.0.0.1 npm1' > /etc/hosts"
+		centos.vm.provision "shell", inline: "echo '127.0.0.1 localhost' >> /etc/hosts"
+		centos.vm.provision "shell", inline: "sed -i '/HOSTNAME=/c\HOSTNAME=npm1.lab.local' /etc/sysconfig/network "
+		centos.vm.provision "shell", inline: "hostname npm1.lab.local"
+		centos.vm.network "forwarded_port", guest: 8800, host: 8800
 		centos.vm.provision "shell", inline: $pup_agent_script_clx7
 		centos.vm.provision "puppet" do | puppet |
 			puppet.module_path = "modules"

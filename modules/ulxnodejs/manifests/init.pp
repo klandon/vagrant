@@ -1,4 +1,4 @@
-class nodejs{
+class ulxnodejs{
 
   		exec {'curl_nodejs':
         	command => '/usr/bin/curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -',			
